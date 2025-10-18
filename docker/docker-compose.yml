@@ -31,13 +31,13 @@ services:
       - 5679:5679
       - 9382:9382 # entry for MCP (host_port:docker_port). The docker_port must match the value you set for `mcp-port` above.
     volumes:
-      - ./ragflow-logs:/ragflow/logs
-      - ./nginx/ragflow.conf:/etc/nginx/conf.d/ragflow.conf
-      - ./nginx/proxy.conf:/etc/nginx/proxy.conf
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ../history_data_agent:/ragflow/history_data_agent
-      - ./service_conf.yaml.template:/ragflow/conf/service_conf.yaml.template
-      - ./entrypoint.sh:/ragflow/entrypoint.sh
+      - ./ragflow-logs:/ragflow/logs:Z
+      - ./nginx/ragflow.conf:/etc/nginx/conf.d/ragflow.conf:Z
+      - ./nginx/proxy.conf:/etc/nginx/proxy.conf:Z
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:Z
+      - ../history_data_agent:/ragflow/history_data_agent:Z
+      - ./service_conf.yaml.template:/ragflow/conf/service_conf.yaml.template:Z
+      - ./entrypoint.sh:/ragflow/entrypoint.sh:Z  
     env_file: .env
     environment:
       - TZ=${TIMEZONE}

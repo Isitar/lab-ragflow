@@ -153,7 +153,7 @@ services:
       - ${MYSQL_PORT}:3306
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./init.sql:/data/application/init.sql
+      - ./init.sql:/data/application/init.sql:Z
     networks:
       - ragflow
     healthcheck:

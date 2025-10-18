@@ -77,13 +77,13 @@ This step ensures that your local environment is up and running with all the nec
 The RAGFlow project provides a pre-configured `docker-compose.yaml` file located in the `docker/` directory. Open your terminal and change into this directory as follows:
 
 ```bash
-cd docker
+cd podman
 ```
 
 2. **Start All Services**:  
-Use the `docker-compose` command to bring up all the services defined in the `docker-compose.yaml` file:
+Use the `podman-compose` command to bring up all the services defined in the `docker-compose.yaml` file:
 ```bash
-docker-compose up -d
+podman-compose -f docker-compose.yml --profile elasticsearch up -d
 ```
 The `-d` flag ensures the containers run in the background.
 
@@ -91,7 +91,7 @@ The `-d` flag ensures the containers run in the background.
 3. **Verify the Running Services**:  
 After the services start, check that they are all running by viewing the active containers:
 ```bash
-docker ps
+podman ps
 ```
 
    Look for the following services in the output:
@@ -102,7 +102,7 @@ docker ps
 
   Confirm that the services are up and running without any errors in their logs. You can check a container's logs with the command:
   ```bash
-  docker logs <container_name>
+  podman logs <container_name>
   ```
 
 ---
