@@ -2,6 +2,17 @@ include:
   - ./docker-compose-base.yml
 # To ensure that the container processes the locally modified `service_conf.yaml.template` instead of the one included in its image, you need to mount the local `service_conf.yaml.template` to the container.
 services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - 11434:11434
+    volumes:
+     - ollama-data:/root/.ollama
+    networks:
+      - ragflow
+    stdin_open: true
+    tty: true
+
   ragflow:
     depends_on:
       mysql:
@@ -72,3 +83,7 @@ services:
   #   # If you're using Docker Desktop, the --add-host flag is optional. This flag makes sure that the host's internal IP gets exposed to the Prometheus container.
   #   extra_hosts:
   #     - "host.docker.internal:host-gateway"
+
+volumes:
+  ollama-data:
+    driver: local
