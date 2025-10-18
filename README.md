@@ -149,6 +149,24 @@ In this step, you’ll configure the models that RAGFlow will use to perform its
 
 You’ll need to set up your OpenAI API key within the RAGFlow interface and choose specific models for both the chat and embedding components. This setup allows RAGFlow to utilize OpenAI's models to generate responses and perform embedding operations.
 
+As an alternative you can run your own ollama model, so you don't depend on openai & don't need any credits.
+For this, download two models in your ollama instance:
+
+```
+podman exec -it docker_ollama_1 ollama pull llama3.2
+podman exec -it docker_ollama_1 ollama pull bge-m3
+```
+
+the url for these models is: http://ollama:11434
+
+you can check the access from the ragflow server:
+
+```
+podman exec -it ragflow-server curl http://ollama:11434
+```
+
+it should output Ollama is running
+
 ---
 
 1. **Access the Model Providers Section**:  
